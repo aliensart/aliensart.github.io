@@ -6,7 +6,7 @@
     <title>al1ennn. - Commissions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,700;1,300&family=Questrial&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,300&family=Questrial&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -69,9 +69,15 @@
             color: #1a1a1a;
         }
 
-        .nav-links li a {
+        .nav-links li a, .nav-links li span {
             text-decoration: none;
             color: inherit;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links li a:hover, .nav-links li span:hover {
+            opacity: 0.6;
         }
 
         /* Identity Block */
@@ -168,7 +174,7 @@
         /* OPAQUE window body styling */
         .window-body {
             flex-grow: 1;
-            background: #FFFFFF !important; /* Forces fully opaque solid look */
+            background: #FFFFFF !important;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -395,16 +401,133 @@
             transition: transform 0.2s;
         }
 
+        /* --- Text Content Pop-up Screen Layouts --- */
+        .content-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('background_01.png');
+            background-size: cover;
+            background-position: center;
+            z-index: 20;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .content-popup-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .popup-card {
+            width: 90%;
+            max-width: 800px;
+            height: 85%;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .popup-close-btn {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.05);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            transition: background 0.2s;
+        }
+
+        .popup-close-btn:hover {
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .popup-title {
+            font-family: 'Questrial', sans-serif;
+            font-size: 2.5rem;
+            color: #7AA884;
+            margin-bottom: 25px;
+            border-bottom: 2px solid rgba(122, 168, 132, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .popup-scroll-body {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+
+        /* Bullet lists custom formatting setup */
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .bullet-list li {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333333;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        /* Inject custom clean dot character formatting at line starts */
+        .bullet-list li::before {
+            content: "•";
+            position: absolute;
+            left: 5px;
+            top: 0;
+            color: #7AA884;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+
+        .bullet-list .list-section-header {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #7AA884;
+            margin-top: 15px;
+            padding-left: 0;
+            list-style: none;
+        }
+        
+        .bullet-list .list-section-header::before {
+            content: "";
+        }
+
         /* ==========================================================================
-           4. ADAPTIVE MOBILE BREAKPOINT RULES (Matches al1en mobile.jpg Mockup)
+           4. ADAPTIVE MOBILE BREAKPOINT RULES
            ========================================================================== */
         @media (max-width: 768px) {
             body, html {
-                overflow-y: auto; /* Allow gentle vertical breathing space if needed */
+                overflow-y: auto; 
             }
 
-            .background-canvas {
-                background-image: url('background_02.png'); /* Swaps to mobile optimized format asset */
+            .background-canvas, .content-popup-overlay, .gallery-overlay {
+                background-image: url('background_02.png'); 
             }
 
             .glass-container {
@@ -419,7 +542,7 @@
             }
 
             .header-nav {
-                justify-content: center; /* Center links across phone layouts */
+                justify-content: center; 
             }
 
             .nav-links {
@@ -444,7 +567,6 @@
                 line-height: 1.4;
             }
 
-            /* Stack structural elements vertically directly matching mockup flow layout */
             .interactive-zone {
                 flex-direction: column;
                 gap: 20px;
@@ -453,7 +575,6 @@
                 margin-bottom: 10px;
             }
 
-            /* order! button repositions perfectly ON TOP of mock window wrapper frame */
             .order-button {
                 order: 1; 
                 width: 100%;
@@ -467,7 +588,7 @@
                 order: 2;
                 width: 100%;
                 max-width: 340px;
-                height: 340px; /* Scales down gracefully to avoid popping off-screen */
+                height: 340px; 
             }
 
             .footer-brand {
@@ -481,31 +602,44 @@
                 width: 100%;
             }
 
-            /* Compact layout modifiers for Mobile Gallery views */
             .gallery-overlay {
                 padding: 20px;
-                background-image: url('background_02.png');
             }
 
             .gallery-grid {
-                grid-template-columns: 1fr; /* Convert to stack matrix layout */
+                grid-template-columns: 1fr; 
                 grid-template-rows: repeat(6, 320px);
                 gap: 20px;
+            }
+
+            .popup-card {
+                padding: 30px 20px;
+                height: 90%;
+            }
+
+            .popup-title {
+                font-size: 1.8rem;
+            }
+
+            .bullet-list li {
+                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Unified Master Canvas Asset -->
     <div class="background-canvas"></div>
 
+    <!-- Main Front-facing Card Display Interface -->
     <div class="glass-container">
         
         <header class="header-nav">
             <ul class="nav-links">
-                <li>• <a href="#comms">comms info!</a></li>
-                <li>• <a href="#rules">basic rules :p</a></li>
-                <li>• <a href="#discord">get my discord</a></li>
+                <li>• <span id="commsTrigger">comms info!</span></li>
+                <li>• <span id="rulesTrigger">basic rules :p</span></li>
+                <li>• <a href="https://discord.gg/PvCKhXf34r" target="_blank" rel="noopener noreferrer">get my discord</a></li>
             </ul>
         </header>
 
@@ -518,6 +652,7 @@
         </main>
 
         <div class="interactive-zone">
+            <!-- Expanded Box configured to trigger gallery trigger mechanism -->
             <div class="mock-window" id="windowTrigger">
                 <div class="window-titlebar">
                     <span>♡ View Portfolio</span>
@@ -541,6 +676,7 @@
 
     </div>
 
+    <!-- Full-screen Dynamic Showcase Interface -->
     <div class="gallery-overlay" id="galleryOverlay">
         <div class="gallery-header">
             <button class="close-gallery" id="closeTrigger">✕ Close Portfolio</button>
@@ -557,11 +693,66 @@
         <button class="scroll-down-btn" id="scrollDownBtn">↓ Scroll to View More</button>
     </div>
 
+    <!-- Dynamic Custom Content Page Module Pop-up - Basic Rules -->
+    <div class="content-popup-overlay" id="rulesPopup">
+        <div class="popup-card">
+            <button class="popup-close-btn" id="closeRules">✕</button>
+            <h2 class="popup-title">Terms Of Services</h2>
+            <div class="popup-scroll-body">
+                <ul class="bullet-list">
+                    <li>do NOT spam/harass the artist</li>
+                    <li>usually after payment, drawing will take 1 week, depending on how busy the artist is. If it is going to take 2 weeks+ , the artist will inform you.</li>
+                    <li>All art commissioned is for personal use unless permission is granted. Do not feed it to AI, use it for reselling, redistribute it etc .</li>
+                    <li>For references, please give 2-3 CLEAR references that I can see, not low quality, pixelated references that are hard to see</li>
+                    <li>After the final confirmation phase (see commission info for the timeline), strictly NO REFUNDS.</li>
+                    <li>Should the request be out of my style or make me feel uncomfortable , I have the right to decline it.</li>
+                    <li>By agreeing to this, you consent your final piece be used for my gallery</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Custom Content Page Module Pop-up - Comms Info -->
+    <div class="content-popup-overlay" id="commsPopup">
+        <div class="popup-card">
+            <button class="popup-close-btn" id="closeComms">✕</button>
+            <h2 class="popup-title">Things I will /will not draw:</h2>
+            <div class="popup-scroll-body">
+                <ul class="bullet-list">
+                    <li class="list-section-header">Will draw :</li>
+                    <li>some food</li>
+                    <li>a little bit of mecha</li>
+                    <li>original characters (oc)</li>
+                    <li>landscapes (as long as it is not very detailed)</li>
+                    <li>Yumeship (as long as it doesn't contain anything I can't draw)</li>
+                    <li>Chibi</li>
+                    <li>Roblox avatars(as long as it is not very maximalism)</li>
+
+                    <li class="list-section-header">Will NOT draw:</li>
+                    <li>nsfw</li>
+                    <li>gore ( blood is fine )</li>
+                    <li>Pedophillia</li>
+                    <li>very muscular figures (mostly muscular)</li>
+                    <li>Fully mecha</li>
+                    <li>Anthros/creatures</li>
+                    <li>Anything political</li>
+                    <li>Vehicles</li>
+                    <li>Discrimination</li>
+
+                    <li class="list-section-header">Might draw BUT needs more time</li>
+                    <li>pretty detailed landscapes</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic Lightbox Modal Module Container Element -->
     <div class="lightbox-modal" id="lightboxModal">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightboxImage" src="" alt="Expanded Showcase Artwork View">
     </div>
 
+    <!-- Control Scripting Area -->
     <script>
         const windowTrigger = document.getElementById('windowTrigger');
         const galleryOverlay = document.getElementById('galleryOverlay');
@@ -572,9 +763,16 @@
         const lightboxImage = document.getElementById('lightboxImage');
         const lightboxClose = document.querySelector('.lightbox-close');
 
+        const commsTrigger = document.getElementById('commsTrigger');
+        const rulesTrigger = document.getElementById('rulesTrigger');
+        const commsPopup = document.getElementById('commsPopup');
+        const rulesPopup = document.getElementById('rulesPopup');
+        const closeComms = document.getElementById('closeComms');
+        const closeRules = document.getElementById('closeRules');
+
         // Dynamic Audio Stack Initialization Module
         let audioInitialized = false;
-        const ambientMusic = new Audio('music_01.mp3'); // HTML5 Audio Engine looks for standard audio extensions (e.g. .mp3, .wav)
+        const ambientMusic = new Audio('music_01.mp3'); 
         ambientMusic.loop = true;
 
         function initializeAudioStream() {
@@ -583,12 +781,16 @@
                     console.log("Audio configuration context suspended by active browser restrictions:", error);
                 });
                 audioInitialized = true;
-                // Remove hooks immediately once initiated
                 document.removeEventListener('click', initializeAudioStream);
             }
         }
-        // Attaches engine listener to capture the user's absolute first structural input interactively
         document.addEventListener('click', initializeAudioStream);
+
+        // Core Comms & Rules Page Layer Toggles
+        commsTrigger.addEventListener('click', () => commsPopup.classList.add('active'));
+        rulesTrigger.addEventListener('click', () => rulesPopup.classList.add('active'));
+        closeComms.addEventListener('click', () => commsPopup.classList.remove('active'));
+        closeRules.addEventListener('click', () => rulesPopup.classList.remove('active'));
 
         // Main gallery triggers
         windowTrigger.addEventListener('click', () => {
