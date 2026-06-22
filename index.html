@@ -869,8 +869,13 @@
             opacity: 0.6;
         }
 
+        /* Structural fallback placeholder setup tag for mobile element rendering injection */
+        .mobile-only-graphic {
+            display: none;
+        }
+
         /* ==========================================================================
-           6. CLEANED & REBUILT ADAPTIVE MOBILE BREAKPOINT RULES
+           6. FIXED & REBUILT ADAPTIVE MOBILE BREAKPOINT RULES
            ========================================================================== */
         @media (max-width: 768px) {
             body, html {
@@ -983,7 +988,7 @@
                 width: 92%;
                 max-width: 380px; 
                 height: auto;
-                aspect-ratio: 9 / 16; /* Perfect 9:16 aspect ratio matching the mockup graphic exactly */
+                aspect-ratio: 9 / 16; /* Locked securely to preserve mockup proportions perfectly */
                 overflow: hidden;
                 background: none;
                 backdrop-filter: none;
@@ -1004,22 +1009,31 @@
                 border: 1px solid rgba(0,0,0,0.1);
             }
 
-            /* --- STEP 1: Full-Card Mockup Setup --- */
+            /* --- STEP 1: Full-Card Mockup Setup Fix --- */
             #orderStep1 {
                 width: 100%;
                 height: 100%;
-                background-image: url('al1en buying mobile.jpg') !important;
-                background-size: 100% 100%; 
-                background-position: center;
-                background-repeat: no-repeat;
+                background: #FFFFFF !important; /* Provide pristine frame container background */
                 border-radius: 24px;
                 position: relative;
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
             }
 
-            /* Completely hide all desktop interactive text/indicators to avoid layout duplicates */
+            /* Completely hide all desktop interactive elements to avoid duplicates */
             #orderStep1 .pricing-left-brand,
             #orderStep1 .pricing-center-interactive {
                 display: none !important;
+            }
+
+            /* Activate custom standard image wrapper to preserve drawing layout aspect ratio natively */
+            .mobile-only-graphic {
+                display: block !important;
+                width: 100%;
+                height: 100%;
+                object-fit: contain; /* Prevents warping/clipping so character stays left and pricing stays right */
+                pointer-events: none;
             }
 
             /* --- STEPS 2 & 3: Mobile Text Layout Adjustments --- */
@@ -1217,6 +1231,9 @@
             <span class="order-footer-brand-tag">aliensart.github.io</span>
 
             <div class="order-step-view active-step" id="orderStep1">
+                <!-- Natively layered graphic element explicitly instantiated for smart aspect calibration handling on phones -->
+                <img src="al1en buying mobile.jpg" class="mobile-only-graphic" alt="Mobile Interactive Framework Map Layer">
+
                 <div class="pricing-left-brand">
                     <h2 class="pricing-brand-title">al1ennn.</h2>
                     <span class="pricing-brand-subtext">ordering...</span>
