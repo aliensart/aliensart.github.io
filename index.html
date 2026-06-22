@@ -520,7 +520,7 @@
 
         /* ==========================================================================
            5. INTERACTIVE ORDERING SYSTEM MODULE STYLES (Desktop Baseline)
-           ========================================================================== */
+           ========================================================================= */
         .order-overlay {
             position: fixed;
             top: 0;
@@ -870,13 +870,13 @@
         }
 
         /* ==========================================================================
-           6. ADAPTIVE MOBILE BREAKPOINT RULES (Matches al1en buying mobile.jpg)
+           6. CLEANED & REBUILT ADAPTIVE MOBILE BREAKPOINT RULES
            ========================================================================== */
         @media (max-width: 768px) {
             body, html {
                 overflow-x: hidden;
                 overflow-y: auto;
-                background-color: #7AA884; /* Soft background wrapper wrapper to clean borders */
+                background-color: #7AA884; 
                 align-items: flex-start;
                 padding: 10px 0;
                 height: auto;
@@ -971,19 +971,19 @@
                 gap: 15px;
             }
 
-            /* --- Ordering Flow Canvas System Aspect Ratio Calibration Configuration --- */
+            /* --- Mobile Ordering Window Overlay --- */
             .order-overlay {
                 align-items: center;
                 overflow-y: auto;
-                padding: 10px 0;
+                padding: 0;
             }
 
             .order-container-card {
                 padding: 0;
                 width: 92%;
-                max-width: 380px; /* Locks it securely into safe phone viewport scale guidelines */
+                max-width: 380px; 
                 height: auto;
-                aspect-ratio: 9 / 16; /* FORCES exact structural 9:16 aspect proportions matching your graphic file perfectly */
+                aspect-ratio: 9 / 16; /* Perfect 9:16 aspect ratio matching the mockup graphic exactly */
                 overflow: hidden;
                 background: none;
                 backdrop-filter: none;
@@ -995,47 +995,38 @@
             .order-close {
                 top: 20px;
                 left: 20px;
-                background: rgba(255, 255, 255, 0.75);
+                background: rgba(255, 255, 255, 0.85);
                 backdrop-filter: blur(5px);
                 -webkit-backdrop-filter: blur(5px);
                 box-shadow: 0 2px 8px rgba(0,0,0,0.15);
                 z-index: 60;
+                color: #1a1a1a;
+                border: 1px solid rgba(0,0,0,0.1);
             }
 
-            /* Step 1 Canvas Rendering al1en buying mobile.jpg setup rule parameters */
+            /* --- STEP 1: Full-Card Mockup Setup --- */
             #orderStep1 {
                 width: 100%;
                 height: 100%;
                 background-image: url('al1en buying mobile.jpg') !important;
-                background-size: 100% 100%; /* Stretches pixel-perfect edge-to-edge seamlessly without clipping drawn canvas details */
+                background-size: 100% 100%; 
                 background-position: center;
+                background-repeat: no-repeat;
                 border-radius: 24px;
                 position: relative;
             }
 
-            /* Strip desktop interactive anchors away in mobile state models completely */
+            /* Completely hide all desktop interactive text/indicators to avoid layout duplicates */
             #orderStep1 .pricing-left-brand,
-            #orderStep1 .hover-coordinates-map {
+            #orderStep1 .pricing-center-interactive {
                 display: none !important;
             }
 
-            #orderStep1 .pricing-center-interactive,
-            #orderStep1 .character-viewport,
-            #orderStep1 .character-base-art {
-                width: 100%;
-                height: 100%;
-                max-width: none;
-                max-height: none;
-                display: block;
-            }
-
-            /* Step 2 & 3 Mobile Layout System Modifiers */
+            /* --- STEPS 2 & 3: Mobile Text Layout Adjustments --- */
             #orderStep2, #orderStep3 {
-                background: rgba(255, 255, 255, 0.95);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
+                background: rgba(255, 255, 255, 0.98);
                 border-radius: 24px;
-                padding: 70px 20px 80px 20px;
+                padding: 75px 24px 85px 24px;
                 width: 100%;
                 height: 100%;
             }
@@ -1046,66 +1037,54 @@
                 padding: 0;
             }
 
-            /* Shift menu step headers safely up into empty layout coordinates blocks */
+            /* Hide the right-hand bar text checklist elements on mobile screens */
             .order-right-nav {
-                position: absolute;
-                top: 22px;
-                right: 20px;
-                flex-direction: row;
-                gap: 8px;
-                width: auto;
-                z-index: 55;
+                display: none !important;
             }
 
-            .step-menu-item {
-                font-size: 0.8rem;
-                color: rgba(0, 0, 0, 0.3);
-            }
-            .step-menu-item.step-active {
-                color: #7AA884;
-            }
-            .step-menu-item::before {
-                display: none; 
-            }
-
-            /* Absolute Invisible Hotspot overlapping your hand-drawn layout vector arrow graphic precisely */
-            .order-action-footer {
+            /* --- Universal Footer Controller & Transparent Touch Target Engine --- */
+            /* This targets Step 1 and overlays perfectly over your hand-drawn white arrow graphic */
+            .order-step-view[id="orderStep1"] ~ .order-action-footer {
                 position: absolute;
-                bottom: 3.5%;
+                bottom: 12%;
                 right: 5%;
-                width: 32%;
-                height: 8%;
+                width: 35%;
+                height: 10%;
                 z-index: 55;
                 margin: 0;
             }
 
-            .footer-nav-btn {
+            .order-step-view[id="orderStep1"] ~ .order-action-footer .footer-nav-btn {
                 width: 100%;
                 height: 100%;
                 padding: 0;
-                font-size: 0; 
+                font-size: 0; /* Makes the word "next" vanish */
                 background: transparent !important; 
                 border: none;
                 cursor: pointer;
             }
 
-            /* Structural design criteria mapping rule sets exclusively configured for checklist visible page layers */
+            /* This overrides the footer for Step 2 so the user can easily see and click a standard gray button */
             .order-step-view[id="orderStep2"] ~ .order-action-footer {
                 position: absolute;
-                bottom: 20px;
-                right: 20px;
-                width: calc(100% - 40px);
-                height: 48px;
+                bottom: 25px;
+                right: 24px;
+                width: calc(100% - 48px);
+                height: 50px;
+                margin: 0;
             }
 
             .order-step-view[id="orderStep2"] ~ .order-action-footer .footer-nav-btn {
+                width: 100%;
+                height: 100%;
                 font-size: 1.1rem;
                 background: #969696 !important;
                 padding: 0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                border-radius: 10px;
+                border-radius: 12px;
+                text-transform: lowercase;
             }
 
             .order-footer-brand-tag {
