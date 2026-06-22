@@ -1093,13 +1093,49 @@
                 z-index: 6;
             }
 
+            /* Enable relative positioning for the cards so lines anchor to them cleanly */
             .mobile-price-card {
+                position: relative;
+                padding-left: 10px;
                 font-family: 'Poppins', sans-serif;
                 font-size: 0.65rem;
                 line-height: 1.3;
                 font-style: italic;
                 color: #4a6b52;
                 font-weight: 500;
+            }
+
+            /* Base style for the pointer lines */
+            .mobile-price-card::after {
+                content: '';
+                position: absolute;
+                height: 1.5px;
+                background-color: rgba(122, 168, 132, 0.6); /* Matching mockup line color tint */
+                top: 15px;
+            }
+
+            /* Top line pointing to the head section */
+            .part-head::after {
+                width: 45px;
+                left: -45px;
+                transform: rotate(15deg);
+                transform-origin: right center;
+            }
+
+            /* Middle line pointing to the waist section */
+            .part-waist::after {
+                width: 35px;
+                left: -35px;
+                transform: rotate(5deg);
+                transform-origin: right center;
+            }
+
+            /* Bottom line pointing to the full body legs section */
+            .part-full::after {
+                width: 45px;
+                left: -45px;
+                transform: rotate(-15deg);
+                transform-origin: right center;
             }
 
             /* Handles bottom label watermark tag positioning */
@@ -1134,18 +1170,25 @@
                 font-weight: 700 !important;
             }
 
-            /* --- STEPS 2 & 3: Mobile Text Layout Adjustments --- */
+            /* --- STEPS 2 & 3: Mobile Text Layout Adjustments & Overflow Fixes --- */
             #orderStep2, #orderStep3 {
                 background: transparent;
                 padding: 60px 24px 85px 24px;
-                width: 100%;
-                height: 100%;
+                width: 100% !important;
+                height: 100% !important;
+                display: none;
             }
 
-            .step-inner-content-wrapper {
-                width: 100%;
-                height: 100%;
-                padding: 0;
+            #orderStep2.active-step, #orderStep3.active-step {
+                display: flex !important;
+                flex-direction: column !important;
+            }
+
+            #orderStep2 .step-inner-content-wrapper, 
+            #orderStep3 .step-inner-content-wrapper {
+                width: 100% !important;
+                padding-right: 0 !important;
+                padding-top: 10px !important;
             }
             
             .order-footer-brand-tag {
@@ -1200,7 +1243,6 @@
 
     </div>
 
-    <!-- Gallery Overlay Content -->
     <div class="gallery-overlay" id="galleryOverlay">
         <div class="gallery-header">
             <button class="close-gallery" id="closeTrigger">✕ Close Portfolio</button>
@@ -1216,7 +1258,6 @@
         <button class="scroll-down-btn" id="scrollDownBtn">↓ Scroll to View More</button>
     </div>
 
-    <!-- Rules Popup Overlay Content -->
     <div class="content-popup-overlay" id="rulesPopup">
         <div class="popup-card">
             <button class="popup-close-btn" id="closeRules">✕</button>
@@ -1235,7 +1276,6 @@
         </div>
     </div>
 
-    <!-- Comms Info Popup Overlay Content -->
     <div class="content-popup-overlay" id="commsPopup">
         <div class="popup-card">
             <button class="popup-close-btn" id="closeComms">✕</button>
@@ -1262,16 +1302,13 @@
         <img class="lightbox-content" id="lightboxImage" src="" alt="Expanded Showcase Artwork View">
     </div>
 
-    <!-- Ordering Workspace Framework Layer Container -->
     <div class="order-overlay" id="orderOverlay">
         <div class="order-container-card">
             <button class="order-close" id="quitOrderBtn">✕ Back</button>
             <span class="order-footer-brand-tag">aliensart.github.io</span>
 
-            <!-- STEP 1: Interactive Pricing Screen Layer Layout -->
             <div class="order-step-view active-step" id="orderStep1">
                 
-                <!-- MOBILE EXCLUSIVE CODE ARCHITECTURE COMPONENT (Replicating layout models of al1en buying mobile_2.jpg accurately) -->
                 <div class="mobile-layout-wrapper">
                     <div class="mobile-step-nav">
                         <span class="mobile-step-item m-active">Pricing</span>
@@ -1285,26 +1322,24 @@
                     </div>
 
                     <div class="mobile-split-workspace">
-                        <!-- Left Side Area - Character cut cleanly in half to save layout column workspace space -->
                         <div class="mobile-art-column">
                             <img src="guide_01.png" class="mobile-art-asset" alt="Character Crop Model">
                         </div>
                         
-                        <!-- Right Side Area - Exact Pricing text parameters matching al1en buying mobile_2.jpg -->
                         <div class="mobile-pricing-column">
-                            <div class="mobile-price-card">
+                            <div class="mobile-price-card part-head">
                                 Lineart 300 robux<br>
                                 Flat colours 350 robux<br>
                                 Rendered 400 robux<br>
                                 Monochrome (manga style) 360 robux
                             </div>
-                            <div class="mobile-price-card">
+                            <div class="mobile-price-card part-waist">
                                 lineart 400 robux<br>
                                 Flat colours 450 robux<br>
                                 Rendered 500 robux<br>
                                 Monochrome (manga style) 460 robux
                             </div>
-                            <div class="mobile-price-card">
+                            <div class="mobile-price-card part-full">
                                 lineart 500 robux<br>
                                 Flat colours 550 robux<br>
                                 Rendered 600 robux<br>
@@ -1316,7 +1351,6 @@
                     <div class="mobile-watermark-tag">aliensart.github.io</div>
                 </div>
 
-                <!-- DESKTOP EXCLUSIVE COMPONENT VIEWPORTS -->
                 <div class="pricing-left-brand">
                     <h2 class="pricing-brand-title">al1ennn.</h2>
                     <span class="pricing-brand-subtext">ordering...</span>
@@ -1361,7 +1395,6 @@
                 </div>
             </div>
 
-            <!-- STEP 2: Review Screen Layer Layout -->
             <div class="order-step-view" id="orderStep2">
                 <div class="step-inner-content-wrapper">
                     <h2 class="popup-title">Review Terms & Rules</h2>
@@ -1381,7 +1414,6 @@
                 </div>
             </div>
 
-            <!-- STEP 3: Checkout Screen Layer Layout -->
             <div class="order-step-view" id="orderStep3">
                 <div class="step-inner-content-wrapper">
                     <h2 class="popup-title">Checkout</h2>
