@@ -874,7 +874,13 @@
            ========================================================================== */
         @media (max-width: 768px) {
             body, html {
-                overflow-y: auto; 
+                overflow-x: hidden;
+                overflow-y: auto;
+                background-color: #7AA884; /* Soft background wrapper wrapper to clean borders */
+                align-items: flex-start;
+                padding: 10px 0;
+                height: auto;
+                min-height: 100%;
             }
 
             .background-canvas {
@@ -883,13 +889,15 @@
 
             .glass-container {
                 width: 92%;
-                height: 96%;
-                padding: 30px 20px;
+                height: auto;
+                min-height: calc(100vh - 20px);
+                padding: 30px 15px;
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
-                gap: 25px;
+                gap: 20px;
                 border-radius: 20px;
+                margin: 0 auto;
             }
 
             .header-nav {
@@ -909,12 +917,12 @@
             }
 
             .main-title {
-                font-size: 3.8rem;
-                margin-bottom: 10px;
+                font-size: 3.5rem;
+                margin-bottom: 5px;
             }
 
             .subtext {
-                font-size: 1.15rem;
+                font-size: 1.1rem;
                 line-height: 1.4;
             }
 
@@ -930,7 +938,7 @@
                 order: 1; 
                 width: 100%;
                 max-width: 280px;
-                padding: 16px 0;
+                padding: 14px 0;
                 font-size: 1.3rem;
                 border-radius: 14px;
             }
@@ -938,8 +946,8 @@
             .mock-window {
                 order: 2;
                 width: 100%;
-                max-width: 340px;
-                height: 340px; 
+                max-width: 320px;
+                height: 320px; 
             }
 
             .footer-brand {
@@ -954,61 +962,58 @@
             }
 
             .gallery-overlay {
-                padding: 20px;
+                padding: 20px 15px;
             }
 
             .gallery-grid {
                 grid-template-columns: 1fr; 
-                grid-template-rows: repeat(6, 320px);
-                gap: 20px;
+                grid-template-rows: repeat(6, 280px);
+                gap: 15px;
             }
 
-            .popup-card {
-                padding: 30px 20px;
-                height: 90%;
+            /* --- Ordering Flow Canvas System Aspect Ratio Calibration Configuration --- */
+            .order-overlay {
+                align-items: center;
+                overflow-y: auto;
+                padding: 10px 0;
             }
 
-            .popup-title {
-                font-size: 1.8rem;
-            }
-
-            .bullet-list li {
-                font-size: 0.95rem;
-            }
-
-            /* --- Ordering Flow Overrides for Phone Screen Space --- */
             .order-container-card {
                 padding: 0;
                 width: 92%;
-                height: 96%;
+                max-width: 380px; /* Locks it securely into safe phone viewport scale guidelines */
+                height: auto;
+                aspect-ratio: 9 / 16; /* FORCES exact structural 9:16 aspect proportions matching your graphic file perfectly */
                 overflow: hidden;
                 background: none;
                 backdrop-filter: none;
                 -webkit-backdrop-filter: none;
                 border: none;
+                box-shadow: 0 12px 36px rgba(0,0,0,0.25);
             }
 
             .order-close {
-                top: 15px;
-                left: 15px;
-                background: rgba(255, 255, 255, 0.6);
+                top: 20px;
+                left: 20px;
+                background: rgba(255, 255, 255, 0.75);
                 backdrop-filter: blur(5px);
                 -webkit-backdrop-filter: blur(5px);
-                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                z-index: 60;
             }
 
-            /* Step 1 Native Canvas Layout Viewport mapping al1en buying mobile.jpg */
+            /* Step 1 Canvas Rendering al1en buying mobile.jpg setup rule parameters */
             #orderStep1 {
                 width: 100%;
                 height: 100%;
                 background-image: url('al1en buying mobile.jpg') !important;
-                background-size: cover;
+                background-size: 100% 100%; /* Stretches pixel-perfect edge-to-edge seamlessly without clipping drawn canvas details */
                 background-position: center;
-                border-radius: 28px;
+                border-radius: 24px;
                 position: relative;
             }
 
-            /* Clear desktop baseline elements to cleanly load the flat mockup background graphic */
+            /* Strip desktop interactive anchors away in mobile state models completely */
             #orderStep1 .pricing-left-brand,
             #orderStep1 .hover-coordinates-map {
                 display: none !important;
@@ -1024,13 +1029,13 @@
                 display: block;
             }
 
-            /* Step 2 & 3 Mobile Container Modifiers */
+            /* Step 2 & 3 Mobile Layout System Modifiers */
             #orderStep2, #orderStep3 {
-                background: rgba(255, 255, 255, 0.9);
+                background: rgba(255, 255, 255, 0.95);
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
-                border-radius: 28px;
-                padding: 60px 20px 80px 20px;
+                border-radius: 24px;
+                padding: 70px 20px 80px 20px;
                 width: 100%;
                 height: 100%;
             }
@@ -1041,32 +1046,36 @@
                 padding: 0;
             }
 
-            /* Shift indicator tracking text headers out of active viewing field lines */
+            /* Shift menu step headers safely up into empty layout coordinates blocks */
             .order-right-nav {
                 position: absolute;
-                top: 15px;
-                right: 15px;
+                top: 22px;
+                right: 20px;
                 flex-direction: row;
                 gap: 8px;
                 width: auto;
-                z-index: 45;
+                z-index: 55;
             }
 
             .step-menu-item {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
+                color: rgba(0, 0, 0, 0.3);
+            }
+            .step-menu-item.step-active {
+                color: #7AA884;
             }
             .step-menu-item::before {
                 display: none; 
             }
 
-            /* Transparent Hotspot positioned directly over the hand-drawn canvas arrow */
+            /* Absolute Invisible Hotspot overlapping your hand-drawn layout vector arrow graphic precisely */
             .order-action-footer {
                 position: absolute;
-                bottom: 4%;
-                right: 6%;
-                width: 110px;
-                height: 65px;
-                z-index: 50;
+                bottom: 3.5%;
+                right: 5%;
+                width: 32%;
+                height: 8%;
+                z-index: 55;
                 margin: 0;
             }
 
@@ -1080,19 +1089,22 @@
                 cursor: pointer;
             }
 
-            /* Re-establish visible block system properties ONLY on standard checklist review page views */
+            /* Structural design criteria mapping rule sets exclusively configured for checklist visible page layers */
             .order-step-view[id="orderStep2"] ~ .order-action-footer {
                 position: absolute;
                 bottom: 20px;
                 right: 20px;
                 width: calc(100% - 40px);
-                height: auto;
+                height: 48px;
             }
 
             .order-step-view[id="orderStep2"] ~ .order-action-footer .footer-nav-btn {
                 font-size: 1.1rem;
                 background: #969696 !important;
-                padding: 12px 0;
+                padding: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 border-radius: 10px;
             }
 
@@ -1104,10 +1116,8 @@
 </head>
 <body>
 
-    <!-- Unified Master Canvas Asset -->
     <div class="background-canvas"></div>
 
-    <!-- Main Front-facing Card Display Interface -->
     <div class="glass-container">
         
         <header class="header-nav">
@@ -1127,7 +1137,6 @@
         </main>
 
         <div class="interactive-zone">
-            <!-- Expanded Box configured to trigger gallery trigger mechanism -->
             <div class="mock-window" id="windowTrigger">
                 <div class="window-titlebar">
                     <span>♡ View Portfolio</span>
@@ -1151,7 +1160,6 @@
 
     </div>
 
-    <!-- Full-screen Dynamic Showcase Interface -->
     <div class="gallery-overlay" id="galleryOverlay">
         <div class="gallery-header">
             <button class="close-gallery" id="closeTrigger">✕ Close Portfolio</button>
@@ -1168,7 +1176,6 @@
         <button class="scroll-down-btn" id="scrollDownBtn">↓ Scroll to View More</button>
     </div>
 
-    <!-- Dynamic Custom Content Page Module Pop-up - Basic Rules -->
     <div class="content-popup-overlay" id="rulesPopup">
         <div class="popup-card">
             <button class="popup-close-btn" id="closeRules">✕</button>
@@ -1187,7 +1194,6 @@
         </div>
     </div>
 
-    <!-- Dynamic Custom Content Page Module Pop-up - Comms Info -->
     <div class="content-popup-overlay" id="commsPopup">
         <div class="popup-card">
             <button class="popup-close-btn" id="closeComms">✕</button>
@@ -1221,21 +1227,16 @@
         </div>
     </div>
 
-    <!-- Dynamic Lightbox Modal Module Container Element -->
     <div class="lightbox-modal" id="lightboxModal">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightboxImage" src="" alt="Expanded Showcase Artwork View">
     </div>
 
-    <!-- ==========================================================================
-       7. INTERACTIVE ORDERING SYSTEM WINDOW OVERLAY LAYER
-       ========================================================================== */ -->
     <div class="order-overlay" id="orderOverlay">
         <div class="order-container-card">
             <button class="order-close" id="quitOrderBtn">✕ Back</button>
             <span class="order-footer-brand-tag">aliensart.github.io</span>
 
-            <!-- STEP 1 VIEWPORT MAPPING AREA (Desktop pulls guide_01.png layout) -->
             <div class="order-step-view active-step" id="orderStep1">
                 <div class="pricing-left-brand">
                     <h2 class="pricing-brand-title">al1ennn.</h2>
@@ -1244,10 +1245,8 @@
 
                 <div class="pricing-center-interactive">
                     <div class="character-viewport">
-                        <!-- Standardized file location asset lookup parameter changed to guide_01.png -->
                         <img src="guide_01.png" class="character-base-art" alt="Ordering Map Guide">
                         
-                        <!-- Mouse Coordinate Mapping Stack Filters -->
                         <div class="hover-coordinates-map">
                             <div class="coordinate-zone zone-head"></div>
                             <div class="price-callout-panel panel-head">
@@ -1283,7 +1282,6 @@
                 </div>
             </div>
 
-            <!-- STEP 2 VIEWPORT MAPPING AREA -->
             <div class="order-step-view" id="orderStep2">
                 <div class="step-inner-content-wrapper">
                     <h2 class="popup-title">Review Terms & Rules</h2>
@@ -1303,7 +1301,6 @@
                 </div>
             </div>
 
-            <!-- STEP 3 VIEWPORT MAPPING AREA -->
             <div class="order-step-view" id="orderStep3">
                 <div class="step-inner-content-wrapper">
                     <h2 class="popup-title">Checkout</h2>
@@ -1318,7 +1315,6 @@
                 </div>
             </div>
 
-            <!-- Master Pipeline Controls & Right Stepper Dashboard -->
             <div class="order-right-nav">
                 <div class="step-menu-item step-active" id="navIndicator1">Pricing</div>
                 <div class="step-menu-item" id="navIndicator2">Review</div>
@@ -1331,8 +1327,15 @@
         </div>
     </div>
 
-    <!-- Control Scripting Area -->
     <script>
+        // Programmatic dynamic mobile height calculations patch fix
+        function resetMobileHeightVar() {
+            document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+        }
+        window.addEventListener('resize', resetMobileHeightVar);
+        window.addEventListener('orientationchange', resetMobileHeightVar);
+        resetMobileHeightVar();
+
         const windowTrigger = document.getElementById('windowTrigger');
         const galleryOverlay = document.getElementById('galleryOverlay');
         const closeTrigger = document.getElementById('closeTrigger');
