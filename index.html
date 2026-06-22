@@ -519,14 +519,363 @@
         }
 
         /* ==========================================================================
-           4. ADAPTIVE MOBILE BREAKPOINT RULES
+           5. INTERACTIVE ORDERING SYSTEM MODULE STYLES (Based on image_8f1107.jpg)
            ========================================================================== */
+        .order-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('background_01.png');
+            background-size: cover;
+            background-position: center;
+            z-index: 30;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .order-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .order-container-card {
+            width: 96%;
+            height: 94%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 28px;
+            border: 1px solid rgba(255,255,255,0.4);
+            padding: 40px 60px;
+            display: flex;
+            position: relative;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.1);
+        }
+
+        .order-close {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+            background: rgba(0,0,0,0.05);
+            border: none;
+            padding: 8px 18px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+            z-index: 40;
+        }
+
+        .order-close:hover {
+            background: rgba(0,0,0,0.1);
+        }
+
+        /* Step Engine Layout */
+        .order-step-view {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        .order-step-view.active-step {
+            display: flex;
+        }
+
+        /* STEP 1: Pricing Layout System (Directly mirroring image_8f1107.jpg) */
+        .pricing-left-brand {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 40px;
+        }
+
+        .pricing-brand-title {
+            font-family: 'Questrial', sans-serif;
+            font-size: 4.5rem;
+            color: #7AA884;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .pricing-brand-subtext {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #9EC0A6;
+            margin-top: 5px;
+            font-weight: 300;
+        }
+
+        .pricing-center-interactive {
+            width: 50%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Character Workspace Base Image Container */
+        .character-viewport {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .character-base-art {
+            max-height: 80%;
+            object-fit: contain;
+            pointer-events: none;
+            opacity: 0.95;
+        }
+
+        /* Interactive Mapping Coordinate Hotspots */
+        .hover-coordinates-map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 35;
+        }
+
+        .coordinate-zone {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 170px;
+            background: rgba(255,255,255,0.01);
+            cursor: crosshair;
+        }
+
+        .zone-head { top: 12%; height: 26%; }
+        .zone-waist { top: 38%; height: 25%; }
+        .zone-full { top: 63%; height: 25%; }
+
+        /* Dynamic Indicator Callout Items */
+        .price-callout-panel {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 32;
+            width: 320px;
+        }
+
+        /* Dynamic connector vectors */
+        .price-callout-panel::before {
+            content: '';
+            position: absolute;
+            height: 2px;
+            background-color: #A3D4B2;
+        }
+
+        /* Specific Node Transformations Mapping to image_8f1107.jpg */
+        .panel-head {
+            top: 22%;
+            right: -240px;
+            flex-direction: row;
+        }
+        .panel-head::before {
+            width: 110px;
+            left: -120px;
+        }
+
+        .panel-waist {
+            top: 52%;
+            left: -240px;
+            text-align: right;
+            justify-content: flex-end;
+        }
+        .panel-waist::before {
+            width: 110px;
+            right: -120px;
+        }
+
+        .panel-full {
+            bottom: 12%;
+            right: -240px;
+            flex-direction: row;
+        }
+        .panel-full::before {
+            width: 110px;
+            left: -120px;
+        }
+
+        /* Pricing Text Formatter Layout */
+        .price-block-text {
+            font-family: 'Poppins', sans-serif;
+            font-style: italic;
+            font-size: 0.92rem;
+            line-height: 1.4;
+            color: #5F8F6B;
+            font-weight: 400;
+        }
+
+        /* Hover Interaction State Machine */
+        .coordinate-zone:hover ~ .price-callout-panel,
+        .price-callout-panel:hover {
+            opacity: 1;
+        }
+
+        /* Steps Right Bar Navigation Menu */
+        .order-right-nav {
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            padding-right: 20px;
+            gap: 30px;
+        }
+
+        .step-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            color: #CCCCCC;
+            font-weight: 300;
+            font-style: italic;
+            transition: color 0.3s, font-weight 0.3s;
+        }
+
+        .step-menu-item::before {
+            content: '•';
+            color: #E6E6E6;
+            font-size: 2rem;
+            transition: color 0.3s;
+        }
+
+        .step-menu-item.step-active {
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .step-menu-item.step-active::before {
+            color: #7AA884;
+        }
+
+        /* Action Nav Bar Footer Engine */
+        .order-action-footer {
+            position: absolute;
+            bottom: 45px;
+            right: 80px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            z-index: 45;
+        }
+
+        .footer-nav-btn {
+            background: #969696;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 45px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            text-transform: lowercase;
+            transition: background 0.2s, opacity 0.2s;
+        }
+
+        .footer-nav-btn:hover {
+            background: #828282;
+        }
+
+        .footer-nav-btn:disabled {
+            background: #D6D6D6;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        /* STEP 2 & STEP 3 Window Display Templates */
+        .step-inner-content-wrapper {
+            width: 75%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-right: 40px;
+            padding-top: 30px;
+        }
+
+        .checkbox-confirmation-block {
+            margin-top: 30px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            color: #333333;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .checkbox-confirmation-block input {
+            width: 20px;
+            height: 20px;
+            accent-color: #7AA884;
+            cursor: pointer;
+        }
+
+        /* Step 3 Target Notice Content */
+        .checkout-alert-box {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            line-height: 1.7;
+            color: #333333;
+            margin-bottom: 35px;
+            max-width: 650px;
+        }
+
+        .discord-checkout-anchor {
+            display: inline-block;
+            background: #7AA884;
+            color: white;
+            text-decoration: none;
+            padding: 16px 40px;
+            font-weight: 700;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 14px rgba(122, 168, 132, 0.3);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .discord-checkout-anchor:hover {
+            background: #699472;
+            transform: translateY(-2px);
+        }
+
+        .order-footer-brand-tag {
+            position: absolute;
+            bottom: 45px;
+            left: 60px;
+            font-size: 1.1rem;
+            color: #7AA884;
+            opacity: 0.6;
+        }
+
+        /* --- ADAPTIVE MOBILE BREAKPOINT RULES --- */
         @media (max-width: 768px) {
             body, html {
                 overflow-y: auto; 
             }
 
-            .background-canvas, .content-popup-overlay, .gallery-overlay {
+            .background-canvas, .content-popup-overlay, .gallery-overlay, .order-overlay {
                 background-image: url('background_02.png'); 
             }
 
@@ -612,7 +961,7 @@
                 gap: 20px;
             }
 
-            .popup-card {
+            .popup-card, .order-container-card {
                 padding: 30px 20px;
                 height: 90%;
             }
@@ -624,6 +973,58 @@
             .bullet-list li {
                 font-size: 0.95rem;
             }
+
+            /* Mobile Order Flow Optimization Override Layouts */
+            .order-container-card {
+                flex-direction: column;
+                justify-content: flex-start;
+                overflow-y: auto;
+                padding-top: 70px;
+            }
+            .order-step-view.active-step {
+                flex-direction: column;
+                height: auto;
+            }
+            .pricing-left-brand, .pricing-center-interactive, .order-right-nav, .step-inner-content-wrapper {
+                width: 100%;
+                height: auto;
+                padding: 0;
+            }
+            .pricing-left-brand { text-align: center; margin-bottom: 15px; }
+            .pricing-brand-title { font-size: 2.8rem; }
+            .pricing-center-interactive { margin: 20px 0; min-height: 380px; }
+            .order-right-nav {
+                flex-direction: row;
+                justify-content: center;
+                gap: 15px;
+                margin-top: 25px;
+                order: -1;
+            }
+            .step-menu-item { font-size: 1rem; }
+            .step-menu-item::before { font-size: 1.2rem; }
+            .price-callout-panel {
+                position: relative !important;
+                opacity: 1 !important;
+                width: 100% !important;
+                left: 0 !important;
+                right: 0 !important;
+                top: 0 !important;
+                bottom: 0 !important;
+                margin-top: 10px;
+                text-align: center !important;
+                justify-content: center !important;
+            }
+            .price-callout-panel::before { display: none !important; }
+            .coordinate-zone { display: none !important; }
+            .order-action-footer {
+                position: relative;
+                bottom: 0;
+                right: 0;
+                margin-top: 30px;
+                width: 100%;
+                justify-content: center;
+            }
+            .order-footer-brand-tag { display: none; }
         }
     </style>
 </head>
@@ -667,7 +1068,7 @@
                 </div>
             </div>
 
-            <button class="order-button">order!</button>
+            <button class="order-button" id="mainOrderBtn">order!</button>
         </div>
 
         <footer class="footer-brand">
@@ -750,6 +1151,110 @@
     <div class="lightbox-modal" id="lightboxModal">
         <span class="lightbox-close">&times;</span>
         <img class="lightbox-content" id="lightboxImage" src="" alt="Expanded Showcase Artwork View">
+    </div>
+
+    <!-- ==========================================================================
+       6. INTERACTIVE ORDERING SYSTEM WINDOW OVERLAY LAYER
+       ========================================================================== */ -->
+    <div class="order-overlay" id="orderOverlay">
+        <div class="order-container-card">
+            <button class="order-close" id="quitOrderBtn">✕ Back</button>
+            <span class="order-footer-brand-tag">aliensart.github.io</span>
+
+            <!-- STEP 1 VIEWPORT MAPPING AREA -->
+            <div class="order-step-view active-step" id="orderStep1">
+                <div class="pricing-left-brand">
+                    <h2 class="pricing-brand-title">al1ennn.</h2>
+                    <span class="pricing-brand-subtext">ordering...</span>
+                </div>
+
+                <div class="pricing-center-interactive">
+                    <div class="character-viewport">
+                        <!-- Referencing structural art from image_8f1107.jpg -->
+                        <img src="image_8f1107.jpg" class="character-base-art" alt="Ordering Map Guide">
+                        
+                        <!-- Mouse Coordinate Mapping Stack Filters -->
+                        <div class="hover-coordinates-map">
+                            <div class="coordinate-zone zone-head"></div>
+                            <div class="price-callout-panel panel-head">
+                                <div class="price-block-text">
+                                    lineart 300 robux<br>
+                                    Flat colours 350 robux<br>
+                                    Rendered 400 robux<br>
+                                    Monochrome (manga style) 380 robux
+                                </div>
+                            </div>
+
+                            <div class="coordinate-zone zone-waist"></div>
+                            <div class="price-callout-panel panel-waist">
+                                <div class="price-block-text">
+                                    lineart 400 robux<br>
+                                    Flat colours 450 robux<br>
+                                    Rendered 500 robux<br>
+                                    Monochrome (manga style) 480 robux
+                                </div>
+                            </div>
+
+                            <div class="coordinate-zone zone-full"></div>
+                            <div class="price-callout-panel panel-full">
+                                <div class="price-block-text">
+                                    lineart 500 robux<br>
+                                    Flat colours 550 robux<br>
+                                    Rendered 600 robux<br>
+                                    Monochrome (manga style) 580 robux
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 2 VIEWPORT MAPPING AREA -->
+            <div class="order-step-view" id="orderStep2">
+                <div class="step-inner-content-wrapper">
+                    <h2 class="popup-title">Review Terms & Rules</h2>
+                    <div class="popup-scroll-body">
+                        <ul class="bullet-list">
+                            <li>do NOT spam/harass the artist</li>
+                            <li>drawing will take 1 week, depending on how busy the artist is.</li>
+                            <li>All art commissioned is for personal use only. Do not feed it to AI platforms.</li>
+                            <li>After the final confirmation phase, strictly NO REFUNDS.</li>
+                            <li>By ordering, you consent to your final piece being displayed in the portfolio gallery.</li>
+                        </ul>
+                        <label class="checkbox-confirmation-block">
+                            <input type="checkbox" id="termsAgreementCheckbox">
+                            <span>I have read and fully accept the commission rules and pricing structures.</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 3 VIEWPORT MAPPING AREA -->
+            <div class="order-step-view" id="orderStep3">
+                <div class="step-inner-content-wrapper">
+                    <h2 class="popup-title">Checkout</h2>
+                    <div class="checkout-alert-box">
+                        Hi! We're so sorry, but we don't have payment methods setup for the website yet :( Please join our discord server to place your order!
+                    </div>
+                    <div>
+                        <a href="https://discord.gg/PvCKhXf34r" target="_blank" rel="noopener noreferrer" class="discord-checkout-anchor">
+                            Join Discord Server To Order ➔
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Master Pipeline Controls & Right Stepper Dashboard -->
+            <div class="order-right-nav">
+                <div class="step-menu-item step-active" id="navIndicator1">Pricing</div>
+                <div class="step-menu-item" id="navIndicator2">Review</div>
+                <div class="step-menu-item" id="navIndicator3">Checkout</div>
+            </div>
+
+            <div class="order-action-footer">
+                <button class="footer-nav-btn" id="nextStepBtn">next</button>
+            </div>
+        </div>
     </div>
 
     <!-- Control Scripting Area -->
@@ -836,6 +1341,86 @@
         lightboxClose.addEventListener('click', () => {
             lightboxModal.classList.remove('active');
         });
+
+        /* ==========================================================================
+           7. SYSTEM WORKFLOW RUNTIME MANAGEMENT (Ordering Pages Implementation)
+           ========================================================================== */
+        const mainOrderBtn = document.getElementById('mainOrderBtn');
+        const orderOverlay = document.getElementById('orderOverlay');
+        const quitOrderBtn = document.getElementById('quitOrderBtn');
+        const nextStepBtn = document.getElementById('nextStepBtn');
+        const termsAgreementCheckbox = document.getElementById('termsAgreementCheckbox');
+
+        const stepViews = [
+            document.getElementById('orderStep1'),
+            document.getElementById('orderStep2'),
+            document.getElementById('orderStep3')
+        ];
+        const stepIndicators = [
+            document.getElementById('navIndicator1'),
+            document.getElementById('navIndicator2'),
+            document.getElementById('navIndicator3')
+        ];
+
+        let currentActiveStepIndex = 0;
+
+        // Open/Close System Layer Toggles
+        mainOrderBtn.addEventListener('click', () => {
+            orderOverlay.classList.add('active');
+            renderStepState(0);
+        });
+
+        quitOrderBtn.addEventListener('click', () => {
+            orderOverlay.classList.remove('active');
+        });
+
+        // Core Step Rendering Engine
+        function renderStepState(targetIndex) {
+            currentActiveStepIndex = targetIndex;
+            
+            // Toggle screen views visibility parameters
+            stepViews.forEach((view, idx) => {
+                view.classList.toggle('active-step', idx === targetIndex);
+            });
+
+            // Toggle dashboard tracking labels highlights
+            stepIndicators.forEach((indicator, idx) => {
+                indicator.classList.toggle('step-active', idx === targetIndex);
+            });
+
+            // State Evaluation Machine rules criteria
+            if (targetIndex === 0) {
+                nextStepBtn.style.display = 'block';
+                nextStepBtn.removeAttribute('disabled');
+            } else if (targetIndex === 1) {
+                nextStepBtn.style.display = 'block';
+                evaluateCheckboxCondition();
+            } else if (targetIndex === 2) {
+                nextStepBtn.style.display = 'none'; // Terminal checkout state hides action footers
+            }
+        }
+
+        // Action Nav Handling Pipeline
+        nextStepBtn.addEventListener('click', () => {
+            if (currentActiveStepIndex === 0) {
+                renderStepState(1);
+            } else if (currentActiveStepIndex === 1 && termsAgreementCheckbox.checked) {
+                renderStepState(2);
+            }
+        });
+
+        // Checkbox State Verification Linkage Module
+        termsAgreementCheckbox.addEventListener('change', evaluateCheckboxCondition);
+
+        function evaluateCheckboxCondition() {
+            if (currentActiveStepIndex === 1) {
+                if (termsAgreementCheckbox.checked) {
+                    nextStepBtn.removeAttribute('disabled');
+                } else {
+                    nextStepBtn.setAttribute('disabled', 'true');
+                }
+            }
+        }
     </script>
 
 </body>
