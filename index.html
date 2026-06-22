@@ -6,7 +6,7 @@
     <title>al1ennn. - Commissions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2 family=Poppins:ital,wght@1,300&family=Questrial&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,700;1,300&family=Questrial&display=swap" rel="stylesheet">
     
     <style>
         * {
@@ -23,7 +23,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #000;
+            /* FIXED: Removed solid background override to let the canvas image render correctly */
         }
 
         /* Standardized background across the main setup and portfolio modules */
@@ -36,7 +36,7 @@
             background-image: url('background_01.png');
             background-size: cover;
             background-position: center;
-            z-index: -1;
+            z-index: 1; /* FIXED: Elevated stacking index so it renders properly over document roots */
         }
 
         /* Large rounded frame layer */
@@ -52,7 +52,7 @@
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            z-index: 1;
+            z-index: 2; /* Sits cleanly on top of the background canvas */
         }
 
         /* Header Navigation */
@@ -144,6 +144,7 @@
         .window-controls {
             display: flex;
             gap: 5px;
+            pointer-events: none;
         }
 
         .win-btn {
@@ -234,12 +235,14 @@
             background-size: cover;
             background-position: center;
             z-index: 10;
-            display: grid;
-            grid-template-rows: auto 1fr;
+            display: flex;
+            flex-direction: column;
             padding: 40px 60px;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s ease-in-out;
+            overflow-y: auto; /* FIXED: Enables clean scrolling within the portfolio layer */
+            scroll-behavior: smooth;
         }
 
         .gallery-overlay.active {
@@ -251,6 +254,9 @@
             display: flex;
             justify-content: flex-end;
             margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 12;
         }
 
         .close-gallery {
@@ -275,11 +281,10 @@
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            grid-template-rows: repeat(2, 1fr);
+            grid-template-rows: repeat(2, minmax(420px, 1fr)); /* FIXED: Prevents content squishing on smaller layouts */
             gap: 30px;
             width: 100%;
-            height: 100%;
-            padding-bottom: 20px;
+            padding-bottom: 60px;
         }
 
         /* Apple-inspired smooth squircle layout styling */
@@ -288,12 +293,13 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 24px; /* Signature soft corner look */
+            border-radius: 24px; 
             overflow: hidden;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: zoom-in;
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
@@ -306,14 +312,101 @@
             height: 100%;
             object-fit: cover;
         }
+
+        /* FIXED: Scrolling Shortcut Button Controls */
+        .scroll-down-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #1a1a1a;
+            padding: 12px 28px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            z-index: 11;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transition: opacity 0.3s, transform 0.2s;
+        }
+
+        .scroll-down-btn:hover {
+            background: rgba(255, 255, 255, 0.8);
+            transform: translateX(-50%) translateY(-2px);
+        }
+
+        .scroll-down-btn.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* FIXED: Integrated Lightbox Dynamic Window Interface */
+        .lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease-in-out;
+            cursor: zoom-out;
+        }
+
+        .lightbox-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lightbox-content {
+            max-width: 85%;
+            max-height: 85%;
+            border-radius: 16px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+            transform: scale(0.95);
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            object-fit: contain;
+        }
+
+        .lightbox-modal.active .lightbox-content {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: #ffffff;
+            font-size: 2.5rem;
+            cursor: pointer;
+            font-weight: 300;
+            line-height: 1;
+            transition: transform 0.2s;
+        }
+        
+        .lightbox-close:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
 
-    <!-- Unified Master Canvas Asset -->
     <div class="background-canvas"></div>
 
-    <!-- Main Front-facing Card Display Interface -->
     <div class="glass-container">
         
         <header class="header-nav">
@@ -333,7 +426,6 @@
         </main>
 
         <div class="interactive-zone">
-            <!-- Expanded Box configured to trigger gallery trigger mechanism -->
             <div class="mock-window" id="windowTrigger">
                 <div class="window-titlebar">
                     <span>♡ View Portfolio</span>
@@ -357,7 +449,6 @@
 
     </div>
 
-    <!-- Full-screen Dynamic Showcase Interface -->
     <div class="gallery-overlay" id="galleryOverlay">
         <div class="gallery-header">
             <button class="close-gallery" id="closeTrigger">✕ Close Portfolio</button>
@@ -370,21 +461,69 @@
             <div class="art-frame"><img src="gallery_05.png" alt="Artwork Showcase 5"></div>
             <div class="art-frame"><img src="gallery_06.png" alt="Artwork Showcase 6"></div>
         </div>
+        
+        <button class="scroll-down-btn" id="scrollDownBtn">↓ Scroll to View More</button>
     </div>
 
-    <!-- Control Scripting for Overlay State Toggles -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImage" src="" alt="Expanded Showcase Artwork View">
+    </div>
+
     <script>
         const windowTrigger = document.getElementById('windowTrigger');
         const galleryOverlay = document.getElementById('galleryOverlay');
         const closeTrigger = document.getElementById('closeTrigger');
+        const scrollDownBtn = document.getElementById('scrollDownBtn');
+        
+        const lightboxModal = document.getElementById('lightboxModal');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.querySelector('.lightbox-close');
 
+        // Main gallery triggers
         windowTrigger.addEventListener('click', () => {
             galleryOverlay.classList.add('active');
+            // Reset overlay scrolling to top whenever it's loaded
+            galleryOverlay.scrollTop = 0;
+            scrollDownBtn.classList.remove('hidden');
         });
 
         closeTrigger.addEventListener('click', (e) => {
-            e.stopPropagation(); // Stops conflicts with elements underneath
+            e.stopPropagation(); 
             galleryOverlay.classList.remove('active');
+        });
+
+        // Smart dynamic scrolling navigation system handles hiding indicator controls at depths
+        galleryOverlay.addEventListener('scroll', () => {
+            if (galleryOverlay.scrollTop > 120) {
+                scrollDownBtn.classList.add('hidden');
+            } else {
+                scrollDownBtn.classList.remove('hidden');
+            }
+        });
+
+        scrollDownBtn.addEventListener('click', () => {
+            galleryOverlay.scrollTo({
+                top: galleryOverlay.clientHeight * 0.85,
+                behavior: 'smooth'
+            });
+        });
+
+        // Lightbox Runtime Click Mapping Initialization Mechanics
+        document.querySelectorAll('.art-frame img').forEach(image => {
+            image.parentElement.addEventListener('click', () => {
+                lightboxImage.src = image.src;
+                lightboxModal.classList.add('active');
+            });
+        });
+
+        // Close lightbox mechanics
+        lightboxModal.addEventListener('click', () => {
+            lightboxModal.classList.remove('active');
+        });
+        
+        lightboxClose.addEventListener('click', () => {
+            lightboxModal.classList.remove('active');
         });
     </script>
 
