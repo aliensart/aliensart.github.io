@@ -171,7 +171,6 @@
             border: none;
         }
 
-        /* OPAQUE window body styling */
         .window-body {
             flex-grow: 1;
             background: #FFFFFF !important;
@@ -200,7 +199,6 @@
             background-color: rgba(122, 168, 132, 0.05);
         }
 
-        /* Order button centered on the mid-right side */
         .order-button {
             background: #969696;
             color: #FFFFFF;
@@ -219,7 +217,6 @@
             background: #828282;
         }
 
-        /* Footer Element */
         .footer-brand {
             position: absolute;
             bottom: 35px;
@@ -282,7 +279,6 @@
             background: rgba(255, 255, 255, 0.45);
         }
 
-        /* 3x2 Grid Setup for Portfolio Frames */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -478,7 +474,6 @@
             padding-right: 15px;
         }
 
-        /* Bullet lists custom formatting setup */
         .bullet-list {
             list-style: none;
             display: flex;
@@ -494,7 +489,6 @@
             padding-left: 25px;
         }
 
-        /* Inject custom clean dot character formatting at line starts */
         .bullet-list li::before {
             content: "•";
             position: absolute;
@@ -577,7 +571,6 @@
             background: rgba(0,0,0,0.1);
         }
 
-        /* Step Engine Layout */
         .order-step-view {
             width: 100%;
             height: 100%;
@@ -588,7 +581,7 @@
             display: flex;
         }
 
-        /* STEP 1: Pricing Layout System */
+        /* STEP 1: Desktop Pricing Layout System */
         .pricing-left-brand {
             width: 25%;
             display: flex;
@@ -621,7 +614,6 @@
             align-items: center;
         }
 
-        /* Character Workspace Base Image Container */
         .character-viewport {
             position: relative;
             width: 100%;
@@ -639,7 +631,6 @@
             opacity: 0.95;
         }
 
-        /* Interactive Mapping Coordinate Hotspots */
         .hover-coordinates-map {
             position: absolute;
             top: 0;
@@ -662,7 +653,6 @@
         .zone-waist { top: 38%; height: 25%; }
         .zone-full { top: 63%; height: 25%; }
 
-        /* Dynamic Indicator Callout Items */
         .price-callout-panel {
             position: absolute;
             display: flex;
@@ -674,7 +664,6 @@
             width: 320px;
         }
 
-        /* Dynamic connector vectors */
         .price-callout-panel::before {
             content: '';
             position: absolute;
@@ -682,39 +671,15 @@
             background-color: #A3D4B2;
         }
 
-        /* Specific Node Transformations Mapping */
-        .panel-head {
-            top: 22%;
-            right: -240px;
-            flex-direction: row;
-        }
-        .panel-head::before {
-            width: 110px;
-            left: -120px;
-        }
+        .panel-head { top: 22%; right: -240px; flex-direction: row; }
+        .panel-head::before { width: 110px; left: -120px; }
 
-        .panel-waist {
-            top: 52%;
-            left: -240px;
-            text-align: right;
-            justify-content: flex-end;
-        }
-        .panel-waist::before {
-            width: 110px;
-            right: -120px;
-        }
+        .panel-waist { top: 52%; left: -240px; text-align: right; justify-content: flex-end; }
+        .panel-waist::before { width: 110px; right: -120px; }
 
-        .panel-full {
-            bottom: 12%;
-            right: -240px;
-            flex-direction: row;
-        }
-        .panel-full::before {
-            width: 110px;
-            left: -120px;
-        }
+        .panel-full { bottom: 12%; right: -240px; flex-direction: row; }
+        .panel-full::before { width: 110px; left: -120px; }
 
-        /* Pricing Text Formatter Layout */
         .price-block-text {
             font-family: 'Poppins', sans-serif;
             font-style: italic;
@@ -724,13 +689,11 @@
             font-weight: 400;
         }
 
-        /* Hover Interaction State Machine */
         .coordinate-zone:hover ~ .price-callout-panel,
         .price-callout-panel:hover {
             opacity: 1;
         }
 
-        /* Steps Right Bar Navigation Menu */
         .order-right-nav {
             width: 25%;
             display: flex;
@@ -769,7 +732,6 @@
             color: #7AA884;
         }
 
-        /* Action Nav Bar Footer Engine */
         .order-action-footer {
             position: absolute;
             bottom: 45px;
@@ -803,7 +765,6 @@
             opacity: 0.6;
         }
 
-        /* STEP 2 & STEP 3 Window Display Templates */
         .step-inner-content-wrapper {
             width: 75%;
             height: 100%;
@@ -832,7 +793,6 @@
             cursor: pointer;
         }
 
-        /* Step 3 Target Notice Content */
         .checkout-alert-box {
             font-family: 'Poppins', sans-serif;
             font-size: 1.4rem;
@@ -869,8 +829,8 @@
             opacity: 0.6;
         }
 
-        /* Structural fallback placeholder setup tag for mobile element rendering injection */
-        .mobile-only-graphic {
+        /* Elements hidden on desktop, used to accurately construct the al1en buying mobile_2.jpg layout on mobile */
+        .mobile-layout-wrapper {
             display: none;
         }
 
@@ -988,59 +948,196 @@
                 width: 92%;
                 max-width: 380px; 
                 height: auto;
-                aspect-ratio: 9 / 16; /* Locked securely to preserve mockup proportions perfectly */
+                aspect-ratio: 9 / 16; 
                 overflow: hidden;
-                background: none;
-                backdrop-filter: none;
-                -webkit-backdrop-filter: none;
-                border: none;
+                background: linear-gradient(180deg, rgba(235,247,238,0.85) 0%, rgba(212,235,218,0.85) 100%);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                border: 1px solid rgba(255,255,255,0.4);
                 box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+                border-radius: 24px;
             }
 
             .order-close {
-                top: 20px;
-                left: 20px;
-                background: rgba(255, 255, 255, 0.85);
-                backdrop-filter: blur(5px);
-                -webkit-backdrop-filter: blur(5px);
-                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                top: auto;
+                bottom: 22px;
+                left: 24px;
+                background: rgba(255, 255, 255, 0.8);
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
                 z-index: 60;
                 color: #1a1a1a;
                 border: 1px solid rgba(0,0,0,0.1);
+                padding: 6px 14px;
+                font-size: 0.8rem;
             }
 
-            /* --- STEP 1: Full-Card Mockup Setup Fix --- */
-            #orderStep1 {
-                width: 100%;
-                height: 100%;
-                background: #FFFFFF !important; /* Provide pristine frame container background */
-                border-radius: 24px;
-                position: relative;
-                display: flex !important;
-                justify-content: center;
-                align-items: center;
+            /* Hide Desktop Nav Indicators entirely on Mobile */
+            .order-right-nav {
+                display: none !important;
             }
 
-            /* Completely hide all desktop interactive elements to avoid duplicates */
+            /* Hide all Desktop layout container boxes on step 1 completely */
             #orderStep1 .pricing-left-brand,
             #orderStep1 .pricing-center-interactive {
                 display: none !important;
             }
 
-            /* Activate custom standard image wrapper to preserve drawing layout aspect ratio natively */
-            .mobile-only-graphic {
+            /* --- STEP 1: Accurate Element Layout Replication (al1en buying mobile_2.jpg) --- */
+            #orderStep1 {
                 display: block !important;
                 width: 100%;
                 height: 100%;
-                object-fit: contain; /* Prevents warping/clipping so character stays left and pricing stays right */
+                position: relative;
+                padding: 20px;
+                box-sizing: border-box;
+            }
+
+            .mobile-layout-wrapper {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+
+            /* Header Steps Navigation Row */
+            .mobile-step-nav {
+                display: flex;
+                justify-content: space-around;
+                width: 100%;
+                margin-top: 15px;
+                font-size: 0.85rem;
+                font-style: italic;
+                color: #333333;
+            }
+
+            .mobile-step-item {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                opacity: 0.4;
+            }
+
+            .mobile-step-item.m-active {
+                opacity: 1;
+                font-weight: bold;
+            }
+
+            .mobile-step-item::before {
+                content: "•";
+                font-size: 1.2rem;
+                color: #7AA884;
+            }
+
+            /* Branding Overlay Boxes */
+            .mobile-branding-box {
+                text-align: center;
+                margin-top: 25px;
+                z-index: 5;
+            }
+
+            .mobile-main-title {
+                font-family: 'Questrial', sans-serif;
+                font-size: 3.2rem;
+                color: rgba(122, 168, 132, 0.6);
+                font-weight: 900;
+                line-height: 1;
+                letter-spacing: -1px;
+            }
+
+            .mobile-sub-title {
+                font-size: 1.4rem;
+                font-style: italic;
+                color: rgba(158, 192, 166, 0.7);
+                font-weight: 300;
+                margin-top: -2px;
+            }
+
+            /* Two Column Content Arena Split (Art vs List details) */
+            .mobile-split-workspace {
+                display: flex;
+                width: 100%;
+                height: calc(100% - 180px);
+                margin-top: 10px;
+                position: relative;
+            }
+
+            /* Left Side: Art Container cut neatly in half to make room */
+            .mobile-art-column {
+                width: 45%;
+                height: 100%;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .mobile-art-asset {
+                position: absolute;
+                left: -20px; /* Shifts the graphic left so it is cut beautifully in half */
+                top: 50%;
+                transform: translateY(-40%);
+                width: 140%; /* Scale adjustment to maintain chibi details */
+                height: 70%;
+                object-fit: contain;
                 pointer-events: none;
+            }
+
+            /* Right Side: Text Lists details column */
+            .mobile-pricing-column {
+                width: 55%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                padding-left: 5px;
+                padding-right: 5px;
+                z-index: 6;
+            }
+
+            .mobile-price-card {
+                font-family: 'Poppins', sans-serif;
+                font-size: 0.65rem;
+                line-height: 1.3;
+                font-style: italic;
+                color: #4a6b52;
+                font-weight: 500;
+            }
+
+            /* Handles bottom label watermark tag positioning */
+            .mobile-watermark-tag {
+                position: absolute;
+                bottom: 25px;
+                left: 24px;
+                font-size: 0.75rem;
+                color: #7AA884;
+                opacity: 0.6;
+            }
+
+            /* Dynamic Universal action control footer overrides */
+            .order-action-footer {
+                position: absolute;
+                bottom: 18px;
+                right: 24px;
+                width: auto;
+                height: auto;
+                margin: 0;
+                z-index: 55;
+            }
+
+            .footer-nav-btn {
+                background: #969696 !important;
+                color: #FFFFFF !important;
+                padding: 8px 32px !important;
+                font-size: 0.95rem !important;
+                border-radius: 10px !important;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+                text-transform: none !important;
+                font-weight: 700 !important;
             }
 
             /* --- STEPS 2 & 3: Mobile Text Layout Adjustments --- */
             #orderStep2, #orderStep3 {
-                background: rgba(255, 255, 255, 0.98);
-                border-radius: 24px;
-                padding: 75px 24px 85px 24px;
+                background: transparent;
+                padding: 60px 24px 85px 24px;
                 width: 100%;
                 height: 100%;
             }
@@ -1050,57 +1147,7 @@
                 height: 100%;
                 padding: 0;
             }
-
-            /* Hide the right-hand bar text checklist elements on mobile screens */
-            .order-right-nav {
-                display: none !important;
-            }
-
-            /* --- Universal Footer Controller & Transparent Touch Target Engine --- */
-            /* This targets Step 1 and overlays perfectly over your hand-drawn white arrow graphic */
-            .order-step-view[id="orderStep1"] ~ .order-action-footer {
-                position: absolute;
-                bottom: 12%;
-                right: 5%;
-                width: 35%;
-                height: 10%;
-                z-index: 55;
-                margin: 0;
-            }
-
-            .order-step-view[id="orderStep1"] ~ .order-action-footer .footer-nav-btn {
-                width: 100%;
-                height: 100%;
-                padding: 0;
-                font-size: 0; /* Makes the word "next" vanish */
-                background: transparent !important; 
-                border: none;
-                cursor: pointer;
-            }
-
-            /* This overrides the footer for Step 2 so the user can easily see and click a standard gray button */
-            .order-step-view[id="orderStep2"] ~ .order-action-footer {
-                position: absolute;
-                bottom: 25px;
-                right: 24px;
-                width: calc(100% - 48px);
-                height: 50px;
-                margin: 0;
-            }
-
-            .order-step-view[id="orderStep2"] ~ .order-action-footer .footer-nav-btn {
-                width: 100%;
-                height: 100%;
-                font-size: 1.1rem;
-                background: #969696 !important;
-                padding: 0;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 12px;
-                text-transform: lowercase;
-            }
-
+            
             .order-footer-brand-tag {
                 display: none;
             }
@@ -1153,6 +1200,7 @@
 
     </div>
 
+    <!-- Gallery Overlay Content -->
     <div class="gallery-overlay" id="galleryOverlay">
         <div class="gallery-header">
             <button class="close-gallery" id="closeTrigger">✕ Close Portfolio</button>
@@ -1165,10 +1213,10 @@
             <div class="art-frame"><img src="gallery_05.png" alt="Artwork Showcase 5"></div>
             <div class="art-frame"><img src="gallery_06.png" alt="Artwork Showcase 6"></div>
         </div>
-        
         <button class="scroll-down-btn" id="scrollDownBtn">↓ Scroll to View More</button>
     </div>
 
+    <!-- Rules Popup Overlay Content -->
     <div class="content-popup-overlay" id="rulesPopup">
         <div class="popup-card">
             <button class="popup-close-btn" id="closeRules">✕</button>
@@ -1176,17 +1224,18 @@
             <div class="popup-scroll-body">
                 <ul class="bullet-list">
                     <li>do NOT spam/harass the artist</li>
-                    <li>usually after payment, drawing will take 1 week, depending on how busy the artist is. If it is going to take 2 weeks+ , the artist will inform you.</li>
-                    <li>All art commissioned is for personal use unless permission is granted. Do not feed it to AI, use it for reselling, redistribute it etc .</li>
-                    <li>For references, please give 2-3 CLEAR references that I can see, not low quality, pixelated references that are hard to see</li>
-                    <li>After the final confirmation phase (see commission info for the timeline), strictly NO REFUNDS.</li>
-                    <li>Should the request be out of my style or make me feel uncomfortable , I have the right to decline it.</li>
+                    <li>usually after payment, drawing will take 1 week, depending on how busy the artist is.</li>
+                    <li>All art commissioned is for personal use unless permission is granted.</li>
+                    <li>For references, please give 2-3 CLEAR references that I can see.</li>
+                    <li>After the final confirmation phase, strictly NO REFUNDS.</li>
+                    <li>Should the request be out of my style, I have the right to decline it.</li>
                     <li>By agreeing to this, you consent your final piece be used for my gallery</li>
                 </ul>
             </div>
         </div>
     </div>
 
+    <!-- Comms Info Popup Overlay Content -->
     <div class="content-popup-overlay" id="commsPopup">
         <div class="popup-card">
             <button class="popup-close-btn" id="closeComms">✕</button>
@@ -1197,24 +1246,12 @@
                     <li>some food</li>
                     <li>a little bit of mecha</li>
                     <li>original characters (oc)</li>
-                    <li>landscapes (as long as it is not very detailed)</li>
-                    <li>Yumeship (as long as it doesn't contain anything I can't draw)</li>
-                    <li>Chibi</li>
-                    <li>Roblox avatars(as long as it is not very maximalism)</li>
+                    <li>Roblox avatars</li>
 
                     <li class="list-section-header">Will NOT draw:</li>
-                    <li>nsfw</li>
-                    <li>gore ( blood is fine )</li>
-                    <li>Pedophillia</li>
-                    <li>very muscular figures (mostly muscular)</li>
+                    <li>nsfw / gore</li>
                     <li>Fully mecha</li>
-                    <li>Anthros/creatures</li>
                     <li>Anything political</li>
-                    <li>Vehicles</li>
-                    <li>Discrimination</li>
-
-                    <li class="list-section-header">Might draw BUT needs more time</li>
-                    <li>pretty detailed landscapes</li>
                 </ul>
             </div>
         </div>
@@ -1225,15 +1262,61 @@
         <img class="lightbox-content" id="lightboxImage" src="" alt="Expanded Showcase Artwork View">
     </div>
 
+    <!-- Ordering Workspace Framework Layer Container -->
     <div class="order-overlay" id="orderOverlay">
         <div class="order-container-card">
             <button class="order-close" id="quitOrderBtn">✕ Back</button>
             <span class="order-footer-brand-tag">aliensart.github.io</span>
 
+            <!-- STEP 1: Interactive Pricing Screen Layer Layout -->
             <div class="order-step-view active-step" id="orderStep1">
-                <!-- Natively layered graphic element explicitly instantiated for smart aspect calibration handling on phones -->
-                <img src="al1en buying mobile.jpg" class="mobile-only-graphic" alt="Mobile Interactive Framework Map Layer">
+                
+                <!-- MOBILE EXCLUSIVE CODE ARCHITECTURE COMPONENT (Replicating layout models of al1en buying mobile_2.jpg accurately) -->
+                <div class="mobile-layout-wrapper">
+                    <div class="mobile-step-nav">
+                        <span class="mobile-step-item m-active">Pricing</span>
+                        <span class="mobile-step-item">Review</span>
+                        <span class="mobile-step-item">Checkout</span>
+                    </div>
 
+                    <div class="mobile-branding-box">
+                        <h2 class="mobile-main-title">al1ennn.</h2>
+                        <div class="mobile-sub-title">ordering...</div>
+                    </div>
+
+                    <div class="mobile-split-workspace">
+                        <!-- Left Side Area - Character cut cleanly in half to save layout column workspace space -->
+                        <div class="mobile-art-column">
+                            <img src="guide_01.png" class="mobile-art-asset" alt="Character Crop Model">
+                        </div>
+                        
+                        <!-- Right Side Area - Exact Pricing text parameters matching al1en buying mobile_2.jpg -->
+                        <div class="mobile-pricing-column">
+                            <div class="mobile-price-card">
+                                Lineart 300 robux<br>
+                                Flat colours 350 robux<br>
+                                Rendered 400 robux<br>
+                                Monochrome (manga style) 360 robux
+                            </div>
+                            <div class="mobile-price-card">
+                                lineart 400 robux<br>
+                                Flat colours 450 robux<br>
+                                Rendered 500 robux<br>
+                                Monochrome (manga style) 460 robux
+                            </div>
+                            <div class="mobile-price-card">
+                                lineart 500 robux<br>
+                                Flat colours 550 robux<br>
+                                Rendered 600 robux<br>
+                                Monochrome (manga style ) 560 robux
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-watermark-tag">aliensart.github.io</div>
+                </div>
+
+                <!-- DESKTOP EXCLUSIVE COMPONENT VIEWPORTS -->
                 <div class="pricing-left-brand">
                     <h2 class="pricing-brand-title">al1ennn.</h2>
                     <span class="pricing-brand-subtext">ordering...</span>
@@ -1250,7 +1333,7 @@
                                     lineart 300 robux<br>
                                     Flat colours 350 robux<br>
                                     Rendered 400 robux<br>
-                                    Monochrome (manga style) 380 robux
+                                    Monochrome (manga style) 360 robux
                                 </div>
                             </div>
 
@@ -1260,7 +1343,7 @@
                                     lineart 400 robux<br>
                                     Flat colours 450 robux<br>
                                     Rendered 500 robux<br>
-                                    Monochrome (manga style) 480 robux
+                                    Monochrome (manga style) 460 robux
                                 </div>
                             </div>
 
@@ -1270,7 +1353,7 @@
                                     lineart 500 robux<br>
                                     Flat colours 550 robux<br>
                                     Rendered 600 robux<br>
-                                    Monochrome (manga style) 580 robux
+                                    Monochrome (manga style) 560 robux
                                 </div>
                             </div>
                         </div>
@@ -1278,6 +1361,7 @@
                 </div>
             </div>
 
+            <!-- STEP 2: Review Screen Layer Layout -->
             <div class="order-step-view" id="orderStep2">
                 <div class="step-inner-content-wrapper">
                     <h2 class="popup-title">Review Terms & Rules</h2>
@@ -1297,6 +1381,7 @@
                 </div>
             </div>
 
+            <!-- STEP 3: Checkout Screen Layer Layout -->
             <div class="order-step-view" id="orderStep3">
                 <div class="step-inner-content-wrapper">
                     <h2 class="popup-title">Checkout</h2>
@@ -1318,13 +1403,12 @@
             </div>
 
             <div class="order-action-footer">
-                <button class="footer-nav-btn" id="nextStepBtn">next</button>
+                <button class="footer-nav-btn" id="nextStepBtn">Next!</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Programmatic dynamic mobile height calculations patch fix
         function resetMobileHeightVar() {
             document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
         }
@@ -1348,7 +1432,6 @@
         const closeComms = document.getElementById('closeComms');
         const closeRules = document.getElementById('closeRules');
 
-        // Dynamic Audio Stack Initialization Module
         let audioInitialized = false;
         const ambientMusic = new Audio('music_01.mp3'); 
         ambientMusic.loop = true;
@@ -1356,7 +1439,7 @@
         function initializeAudioStream() {
             if (!audioInitialized) {
                 ambientMusic.play().catch(error => {
-                    console.log("Audio configuration context suspended by active browser restrictions:", error);
+                    console.log("Audio play blocked by browser:", error);
                 });
                 audioInitialized = true;
                 document.removeEventListener('click', initializeAudioStream);
@@ -1364,13 +1447,11 @@
         }
         document.addEventListener('click', initializeAudioStream);
 
-        // Core Comms & Rules Page Layer Toggles
         commsTrigger.addEventListener('click', () => commsPopup.classList.add('active'));
         rulesTrigger.addEventListener('click', () => rulesPopup.classList.add('active'));
         closeComms.addEventListener('click', () => commsPopup.classList.remove('active'));
         closeRules.addEventListener('click', () => rulesPopup.classList.remove('active'));
 
-        // Main gallery triggers
         windowTrigger.addEventListener('click', () => {
             galleryOverlay.classList.add('active');
             galleryOverlay.scrollTop = 0;
@@ -1382,7 +1463,6 @@
             galleryOverlay.classList.remove('active');
         });
 
-        // Smart dynamic scrolling navigation system
         galleryOverlay.addEventListener('scroll', () => {
             if (galleryOverlay.scrollTop > 120) {
                 scrollDownBtn.classList.add('hidden');
@@ -1398,7 +1478,6 @@
             });
         });
 
-        // Lightbox Runtime Click Mapping Initialization Mechanics
         document.querySelectorAll('.art-frame img').forEach(image => {
             image.parentElement.addEventListener('click', () => {
                 lightboxImage.src = image.src;
@@ -1406,18 +1485,14 @@
             });
         });
 
-        // Close lightbox mechanics
         lightboxModal.addEventListener('click', () => {
             lightboxModal.classList.remove('active');
         });
-        
         lightboxClose.addEventListener('click', () => {
             lightboxModal.classList.remove('active');
         });
 
-        /* ==========================================================================
-           8. SYSTEM WORKFLOW RUNTIME MANAGEMENT (Ordering Pages Implementation)
-           ========================================================================== */
+        // --- System Runtime Workflow Logic ---
         const mainOrderBtn = document.getElementById('mainOrderBtn');
         const orderOverlay = document.getElementById('orderOverlay');
         const quitOrderBtn = document.getElementById('quitOrderBtn');
@@ -1437,7 +1512,6 @@
 
         let currentActiveStepIndex = 0;
 
-        // Open/Close System Layer Toggles
         mainOrderBtn.addEventListener('click', () => {
             orderOverlay.classList.add('active');
             renderStepState(0);
@@ -1447,21 +1521,17 @@
             orderOverlay.classList.remove('active');
         });
 
-        // Core Step Rendering Engine
         function renderStepState(targetIndex) {
             currentActiveStepIndex = targetIndex;
             
-            // Toggle screen views visibility parameters
             stepViews.forEach((view, idx) => {
                 view.classList.toggle('active-step', idx === targetIndex);
             });
 
-            // Toggle dashboard tracking labels highlights
             stepIndicators.forEach((indicator, idx) => {
                 indicator.classList.toggle('step-active', idx === targetIndex);
             });
 
-            // State Evaluation Machine rules criteria
             if (targetIndex === 0) {
                 nextStepBtn.style.display = 'block';
                 nextStepBtn.removeAttribute('disabled');
@@ -1473,7 +1543,6 @@
             }
         }
 
-        // Action Nav Handling Pipeline
         nextStepBtn.addEventListener('click', () => {
             if (currentActiveStepIndex === 0) {
                 renderStepState(1);
@@ -1482,7 +1551,6 @@
             }
         });
 
-        // Checkbox State Verification Linkage Module
         termsAgreementCheckbox.addEventListener('change', evaluateCheckboxCondition);
 
         function evaluateCheckboxCondition() {
@@ -1495,6 +1563,5 @@
             }
         }
     </script>
-
 </body>
 </html>
